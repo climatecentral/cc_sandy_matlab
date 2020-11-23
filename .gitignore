@@ -1,4 +1,3 @@
-
 output/NJ_sandy_cfdamages_CMIP5_Mean.blocks.condensed.csv
 output/NJ_sandy_cfdamages_CMIP5_Mean.blocks.csv
 output/NJ_sandy_cfdamages_CMIP5_Mean.csv
@@ -278,3 +277,9 @@ data/simulations_july_2016/research_TP_0001_HIS_Tides_1_SLC_0_RFC_1_maxele_alt07
 data/simulations_july_2016/research_TP_0001_HIS_Tides_1_SLC_0_RFC_1_maxele_alt08.63/NACCS_TP_0001_HIS_Tides_1_SLC_0_RFC_1_maxele.63
 data/simulations_july_2016/research_TP_0001_HIS_Tides_1_SLC_0_RFC_1_maxele_alt09.63/NACCS_TP_0001_HIS_Tides_1_SLC_0_RFC_1_maxele.63
 data/station_to_remove.csv
+.DS_Store
+*~
+data/SEanalysis/
+data/SOURCE/
+data/fig1/
+data/source_data/
