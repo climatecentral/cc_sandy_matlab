@@ -132,7 +132,6 @@ d19_lower_SLR=d19_lower*nyear_trends/10;
 ny_SLR_in_2012=[noaa_median_SLR,noaa_lower_SLR,noaa_upper_SLR] % includes GIA
 global_SLR_in_2012=[d19_median_SLR,d19_lower_SLR,d19_upper_SLR]
 
-
 %% Function Library
 
 % X = mean - z*sigma, and assuming
