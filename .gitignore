@@ -283,3 +283,6 @@ data/SEanalysis/
 data/SOURCE/
 data/fig1/
 data/source_data/
+*.zip
+data/INPUT
+data/OUTPUT
