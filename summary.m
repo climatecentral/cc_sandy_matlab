@@ -247,6 +247,13 @@ Summary_table=table(summary_table_rows, ...
     'VariableNames',summary_table_columns)
 % writetable(Summary_table,'../Summary_table.xlsx')
 
+%% Save results out
+
+% save the data out to a file for use in source creation
+save('./data/source_data/summary_samps.mat','SE_50CI','SE_05CI','SE_95CI',...
+    'global_ALL_median','global_ALL_05CI','global_ALL_95CI',...
+    'nyc_ALL_median','nyc_ALL_05CI','nyc_ALL_95CI');
+
 
 %% Function Library
 
