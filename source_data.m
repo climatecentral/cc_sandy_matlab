@@ -29,6 +29,7 @@ clear
 savepath='./data/SOURCE/';
 q=[0.05,0.5,0.95];
 nyf=0.91;
+nyf_noLWS=0.883761834;
 yrind=113;
 
 %% Table 1
@@ -92,7 +93,7 @@ d19_50(end)=fig1dat.fig1dat.fig1a_historical.dangendorf2019(1);
 d19_95(end)=fig1dat.fig1dat.fig1a_historical.dangendorf2019(3);
 % Fill Budget Data
 bdg=ones(nt,1)*NaN;
-bdg_05=d19; bdg_50=d19; bdg_95=d19;
+bdg_05=bdg; bdg_50=bdg; bdg_95=bdg;
 bdg_05(end)=fig1dat.fig1dat.fig1a_historical.budget(1);
 bdg_50(end)=fig1dat.fig1dat.fig1a_historical.budget(2);
 bdg_95(end)=fig1dat.fig1dat.fig1a_historical.budget(3);
@@ -157,11 +158,83 @@ writetable(TFig1c,TFig1c_savename);
 
 %% Table S1
 
+% Source file savename
+TS1_savename=fullfile(savepath,'SI Table 1/Total_GMSL.xlsx');
 
+% Define the LWS terms (from Budget)
+lws_global=[0.751699404,-0.110000000,0.531699404]; lws_nyc=[0.574222152,1.092179865,1.610137578];
+% Calculate the SE modeling + LWS
+% HadCRUT4
+hadcrut_noLWS=SEdat.hadcrut.historical.summary.q(:,yrind);
+hadcrut_LWS(2)=hadcrut_noLWS(2)+lws_global(2);
+hadcrut_LWS(1)=hadcrut_LWS(2)-sqrt((lws_global(2)-lws_global(1))^2+(hadcrut_noLWS(2)-hadcrut_noLWS(1))^2);
+hadcrut_LWS(3)=hadcrut_LWS(2)+sqrt((lws_global(2)-lws_global(3))^2+(hadcrut_noLWS(2)-hadcrut_noLWS(3))^2);
+% CMIP5
+cmip5_noLWS=SEdat.cmip5.historical.summary.q(:,yrind);
+cmip5_LWS(2)=cmip5_noLWS(2)+lws_global(2);
+cmip5_LWS(1)=cmip5_LWS(2)-sqrt((lws_global(2)-lws_global(1))^2+(cmip5_noLWS(2)-cmip5_noLWS(1))^2);
+cmip5_LWS(3)=cmip5_LWS(2)+sqrt((lws_global(2)-lws_global(3))^2+(cmip5_noLWS(2)-cmip5_noLWS(3))^2);
+
+% Columns
+TS1_col={'Scenario','Global50th','Global5th','Global95th'};
+% Rows
+TS1_row={'Observed','Budget', ...
+    'SE-Modeling HadCRUT4+LWS','SE-Modeling CMIP5+LWS'};
+
+% Build Table
+TS1=table(TS1_row', ...
+    [squeeze(fig1dat.fig1dat.fig1a_historical.dangendorf2019(1));squeeze(fig1dat.fig1dat.fig1a_historical.budget(2));hadcrut_LWS(2);cmip5_LWS(2)], ...
+    [squeeze(fig1dat.fig1dat.fig1a_historical.dangendorf2019(2));squeeze(fig1dat.fig1dat.fig1a_historical.budget(1));hadcrut_LWS(1);cmip5_LWS(1)], ...
+    [squeeze(fig1dat.fig1dat.fig1a_historical.dangendorf2019(3));squeeze(fig1dat.fig1dat.fig1a_historical.budget(3));hadcrut_LWS(3);cmip5_LWS(3)], ...
+    'VariableNames',TS1_col);
+writetable(TS1,TS1_savename);
 
 %% Table S2
 
+% Source file savename
+TS2_savename=fullfile(savepath,'SI Table 2/Total_NYC.xlsx');
+
+% Define the NOAA NY observations (copied from observed.m)
+ny_observed=[30.4941,33.7488,37.0035];
+% Define the GIA term (from Kopp 2013)
+gia=[10.88490,14.69000,18.49510];
+% Calculate Observed excluding GIA
+ny_noGIA(2)=ny_observed(2)-gia(2);
+ny_noGIA(1)=ny_noGIA(2)-sqrt((gia(2)-gia(1))^2+(ny_observed(2)-ny_observed(1))^2);
+ny_noGIA(3)=ny_noGIA(2)+sqrt((gia(3)-gia(2))^2+(ny_observed(2)-ny_observed(3))^2);
+
+% Define the NY total Budget Data
+ny_total_bdg=[10.95605287,16.67771649,22.81673570];
+
+% Calculate the SE modeling + LWS
+% HadCRUT4
+NYhadcrut_noLWS=SEdat.hadcrut.historical.summary.q(:,yrind)*nyf_noLWS;
+NYhadcrut_LWS(2)=NYhadcrut_noLWS(2)+lws_nyc(2);
+NYhadcrut_LWS(1)=NYhadcrut_LWS(2)-sqrt((lws_nyc(2)-lws_nyc(1))^2+(NYhadcrut_noLWS(2)-NYhadcrut_noLWS(1))^2);
+NYhadcrut_LWS(3)=NYhadcrut_LWS(2)+sqrt((lws_nyc(2)-lws_nyc(3))^2+(NYhadcrut_noLWS(2)-NYhadcrut_noLWS(3))^2);
+% CMIP5
+NYcmip5_noLWS=SEdat.cmip5.historical.summary.q(:,yrind)*nyf_noLWS;
+NYcmip5_LWS(2)=NYcmip5_noLWS(2)+lws_nyc(2);
+NYcmip5_LWS(1)=NYcmip5_LWS(2)-sqrt((lws_nyc(2)-lws_nyc(1))^2+(NYcmip5_noLWS(2)-NYcmip5_noLWS(1))^2);
+NYcmip5_LWS(3)=NYcmip5_LWS(2)+sqrt((lws_nyc(2)-lws_nyc(3))^2+(NYcmip5_noLWS(2)-NYcmip5_noLWS(3))^2);
+
+% Columns
+TS2_col={'Scenario','NY50th','NY5th','NY95th'};
+% Rows
+TS2_row={'Observed_noGIA','Budget', ...
+    'SE-Modeling HadCRUT4+LWS','SE-Modeling CMIP5+LWS'};
+
+% Build Table
+TS2=table(TS2_row', ...
+    [squeeze(ny_noGIA(2));squeeze(ny_total_bdg(2));squeeze(NYhadcrut_LWS(2));squeeze(NYcmip5_LWS(2))], ...
+    [squeeze(ny_noGIA(1));squeeze(ny_total_bdg(1));squeeze(NYhadcrut_LWS(1));squeeze(NYcmip5_LWS(1))], ...
+    [squeeze(ny_noGIA(3));squeeze(ny_total_bdg(3));squeeze(NYhadcrut_LWS(3));squeeze(NYcmip5_LWS(3))], ...
+    'VariableNames',TS2_col)
+writetable(TS2,TS2_savename);
+
 %% Table S4
+
+
 
 %% Table S5
 
