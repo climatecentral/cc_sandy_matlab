@@ -232,9 +232,70 @@ TS2=table(TS2_row', ...
     'VariableNames',TS2_col)
 writetable(TS2,TS2_savename);
 
+%% Table S3
+
+% This is copied directly from the budget table and added to a speadsheet;
+% see Supplementary Table S3.
+
 %% Table S4
 
+% Source file savename
+TS4_savename=fullfile(savepath,'SI Table 4/Global_SEmodel_Estimates.xlsx');
+
+% Columns
+TS4_col={'Scenario','Summary50th','Summary5th','Summary95th','Mann50th','Mann5th','Mann95th','Marcott50th','Marcott5th','Marcott95th'};
+% Rows
+TS4_row={'Observed',...
+    'CMIP5 Hist.','CMIP5 CF',...
+    'HadCRUT4 Hist.','HadCRUT4 Stable','HadCRUT4 Cooling',...
+    'CMIP5 ASLR','HadCRUT4 Stable ASLR','HadCRUT4 Cooling ASLR'};
+
+% Build Table
+TS4=table(TS4_row', ...
+    [squeeze(fig1dat.fig1dat.fig1a_historical.dangendorf2019(1));squeeze(SEdat.cmip5.historical.summary.q(2,yrind)); squeeze(SEdat.cmip5.cf.summary.q(2,yrind));squeeze(SEdat.hadcrut.historical.summary.q(2,yrind)); squeeze(SEdat.hadcrut.stable.summary.q(2,yrind)); squeeze(SEdat.hadcrut.cooling.summary.q(2,yrind));squeeze(SEdat.cmip5.cf.summary.qdiff(2,yrind)); squeeze(SEdat.hadcrut.stable.summary.qdiff(2,yrind)); squeeze(SEdat.hadcrut.cooling.summary.qdiff(2,yrind))], ...
+    [squeeze(fig1dat.fig1dat.fig1a_historical.dangendorf2019(2));squeeze(SEdat.cmip5.historical.summary.q(1,yrind)); squeeze(SEdat.cmip5.cf.summary.q(1,yrind));squeeze(SEdat.hadcrut.historical.summary.q(1,yrind)); squeeze(SEdat.hadcrut.stable.summary.q(1,yrind)); squeeze(SEdat.hadcrut.cooling.summary.q(1,yrind));squeeze(SEdat.cmip5.cf.summary.qdiff(1,yrind)); squeeze(SEdat.hadcrut.stable.summary.qdiff(1,yrind)); squeeze(SEdat.hadcrut.cooling.summary.qdiff(1,yrind))], ...
+    [squeeze(fig1dat.fig1dat.fig1a_historical.dangendorf2019(3));squeeze(SEdat.cmip5.historical.summary.q(3,yrind)); squeeze(SEdat.cmip5.cf.summary.q(3,yrind));squeeze(SEdat.hadcrut.historical.summary.q(3,yrind)); squeeze(SEdat.hadcrut.stable.summary.q(3,yrind)); squeeze(SEdat.hadcrut.cooling.summary.q(3,yrind));squeeze(SEdat.cmip5.cf.summary.qdiff(3,yrind)); squeeze(SEdat.hadcrut.stable.summary.qdiff(3,yrind)); squeeze(SEdat.hadcrut.cooling.summary.qdiff(3,yrind))], ...
+    [NaN;squeeze(SEdat.cmip5.historical.mann.q(2,yrind)); squeeze(SEdat.cmip5.cf.mann.q(2,yrind));squeeze(SEdat.hadcrut.historical.mann.q(2,yrind)); squeeze(SEdat.hadcrut.stable.mann.q(2,yrind)); squeeze(SEdat.hadcrut.cooling.mann.q(2,yrind));squeeze(SEdat.cmip5.cf.mann.qdiff(2,yrind)); squeeze(SEdat.hadcrut.stable.mann.qdiff(2,yrind)); squeeze(SEdat.hadcrut.cooling.mann.qdiff(2,yrind))], ...
+    [NaN;squeeze(SEdat.cmip5.historical.mann.q(1,yrind)); squeeze(SEdat.cmip5.cf.mann.q(1,yrind));squeeze(SEdat.hadcrut.historical.mann.q(1,yrind)); squeeze(SEdat.hadcrut.stable.mann.q(1,yrind)); squeeze(SEdat.hadcrut.cooling.mann.q(1,yrind));squeeze(SEdat.cmip5.cf.mann.qdiff(1,yrind)); squeeze(SEdat.hadcrut.stable.mann.qdiff(1,yrind)); squeeze(SEdat.hadcrut.cooling.mann.qdiff(1,yrind))], ...
+    [NaN;squeeze(SEdat.cmip5.historical.mann.q(3,yrind)); squeeze(SEdat.cmip5.cf.mann.q(3,yrind));squeeze(SEdat.hadcrut.historical.mann.q(3,yrind)); squeeze(SEdat.hadcrut.stable.mann.q(3,yrind)); squeeze(SEdat.hadcrut.cooling.mann.q(3,yrind));squeeze(SEdat.cmip5.cf.mann.qdiff(3,yrind)); squeeze(SEdat.hadcrut.stable.mann.qdiff(3,yrind)); squeeze(SEdat.hadcrut.cooling.mann.qdiff(3,yrind))], ...
+    [NaN;squeeze(SEdat.cmip5.historical.marcott.q(2,yrind)); squeeze(SEdat.cmip5.cf.marcott.q(2,yrind));squeeze(SEdat.hadcrut.historical.marcott.q(2,yrind)); squeeze(SEdat.hadcrut.stable.marcott.q(2,yrind)); squeeze(SEdat.hadcrut.cooling.marcott.q(2,yrind));squeeze(SEdat.cmip5.cf.marcott.qdiff(2,yrind)); squeeze(SEdat.hadcrut.stable.marcott.qdiff(2,yrind)); squeeze(SEdat.hadcrut.cooling.marcott.qdiff(2,yrind))], ...
+    [NaN;squeeze(SEdat.cmip5.historical.marcott.q(1,yrind)); squeeze(SEdat.cmip5.cf.marcott.q(1,yrind));squeeze(SEdat.hadcrut.historical.marcott.q(1,yrind)); squeeze(SEdat.hadcrut.stable.marcott.q(1,yrind)); squeeze(SEdat.hadcrut.cooling.marcott.q(1,yrind));squeeze(SEdat.cmip5.cf.marcott.qdiff(1,yrind)); squeeze(SEdat.hadcrut.stable.marcott.qdiff(1,yrind)); squeeze(SEdat.hadcrut.cooling.marcott.qdiff(1,yrind))], ...
+    [NaN;squeeze(SEdat.cmip5.historical.marcott.q(3,yrind)); squeeze(SEdat.cmip5.cf.marcott.q(3,yrind));squeeze(SEdat.hadcrut.historical.marcott.q(3,yrind)); squeeze(SEdat.hadcrut.stable.marcott.q(3,yrind)); squeeze(SEdat.hadcrut.cooling.marcott.q(3,yrind));squeeze(SEdat.cmip5.cf.marcott.qdiff(3,yrind)); squeeze(SEdat.hadcrut.stable.marcott.qdiff(3,yrind)); squeeze(SEdat.hadcrut.cooling.marcott.qdiff(3,yrind))], ...
+    'VariableNames',TS4_col)
+writetable(TS4,TS4_savename);
 
 
 %% Table S5
+
+% Source file savename
+TS5_savename=fullfile(savepath,'SI Table 5/CMIP5_IndividualModel_Estimates.xlsx');
+
+% Reorganize the model names, drop out GFDL
+dropname='GFDL-CM3';
+nmod_noDROP=length(SEdat.cmip5.metadata);
+model_names={''};
+count=1;
+for m=1:nmod_noDROP
+    modname=SEdat.cmip5.metadata(m).model_names;
+    if strcmp(modname,dropname)==1
+        continue
+    else
+        model_names{count}=strcat(SEdat.cmip5.metadata(m).model_names,{' '},SEdat.cmip5.metadata(m).replicate_names);
+        count=count+1;
+    end
+end
+model_names;
+
+
+
+
+
+
+
+
+
+
+
+
+
 
