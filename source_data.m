@@ -79,9 +79,9 @@ yeargrid=fig1dat.fig1dat.axes.time;
 nt=length(yeargrid)
 
 % Source file savenames
-TFig1a_savename=fullfile(savepath,'Fig 1/Fig1a_Timeseries.xlsx');
-TFig1b_savename=fullfile(savepath,'Fig 1/Fig1b_Timeseries.xlsx');
-TFig1c_savename=fullfile(savepath,'Fig 1/Fig1c_Timeseries.xlsx');
+TFig1a_savename=fullfile(savepath,'MS Fig 1/Fig1a_Timeseries.xlsx');
+TFig1b_savename=fullfile(savepath,'MS Fig 1/Fig1b_Timeseries.xlsx');
+TFig1c_savename=fullfile(savepath,'MS Fig 1/Fig1c_Timeseries.xlsx');
 
 % ---------- Figure 1a ---------- %
 
@@ -286,16 +286,39 @@ for m=1:nmod_noDROP
 end
 model_names;
 
+% find the quantiles for each individual model
+% SUMMARY
+Hist_Summary_q=squeeze(quantile(SEdat.cmip5.historical.summary.slmodels(:,yrind,:),q,1));
+CF_Summary_q=squeeze(quantile(SEdat.cmip5.cf.summary.slmodels(:,yrind,:),q,1));
+ASLR_Summary_q=squeeze(quantile(SEdat.cmip5.cf.summary.sldiffmodels(:,yrind,:),q,1));
+% MARCOTT
+Hist_Marcott_q=squeeze(quantile(SEdat.cmip5.historical.marcott.slmodels(:,yrind,:),q,1));
+CF_Marcott_q=squeeze(quantile(SEdat.cmip5.cf.marcott.slmodels(:,yrind,:),q,1));
+ASLR_Marcott_q=squeeze(quantile(SEdat.cmip5.cf.marcott.sldiffmodels(:,yrind,:),q,1));
+% MANN
+Hist_Mann_q=squeeze(quantile(SEdat.cmip5.historical.mann.slmodels(:,yrind,:),q,1));
+CF_Mann_q=squeeze(quantile(SEdat.cmip5.cf.mann.slmodels(:,yrind,:),q,1));
+ASLR_Mann_q=squeeze(quantile(SEdat.cmip5.cf.mann.sldiffmodels(:,yrind,:),q,1));
 
+% Columns
+TS5_col={'Model_Ensemble', ...
+    'Summary_Hist_50th','Summary_Hist_5th','Summary_Hist_95th', ...
+    'Summary_CF_50th','Summary_CF_5th','Summary_CF_95th', ...
+    'Summary_ASLR_50th','Summary_ASLR_5th','Summary_ASLR_95th', ...
+    'Mann_Hist_50th','Mann_Hist_5th','Mann_Hist_95th', ...
+    'Mann_CF_50th','Mann_CF_5th','Mann_CF_95th', ...
+    'Mann_ASLR_50th','Mann_ASLR_5th','Mann_ASLR_95th', ...
+    'Marcott_Hist_50th','Marcott_Hist_5th','Marcott_Hist_95th', ...
+    'Marcott_CF_50th','Marcott_CF_5th','Marcott_CF_95th', ...
+    'Marcott_ASLR_50th','Marcott_ASLR_5th','Marcott_ASLR_95th'};
 
+% Rows
+TS5_row=model_names;
 
-
-
-
-
-
-
-
-
-
-
+% Build Table
+TS5=table([TS5_row{:}]', ...
+    squeeze(Hist_Summary_q(2,:)'),squeeze(Hist_Summary_q(1,:)'),squeeze(Hist_Summary_q(3,:)'), squeeze(CF_Summary_q(2,:)'),squeeze(CF_Summary_q(1,:)'),squeeze(CF_Summary_q(3,:)'), squeeze(ASLR_Summary_q(2,:)'),squeeze(ASLR_Summary_q(1,:)'),squeeze(ASLR_Summary_q(3,:)'), ...
+    squeeze(Hist_Mann_q(2,:)'),squeeze(Hist_Mann_q(1,:)'),squeeze(Hist_Mann_q(3,:)'), squeeze(CF_Mann_q(2,:)'),squeeze(CF_Mann_q(1,:)'),squeeze(CF_Mann_q(3,:)'), squeeze(ASLR_Mann_q(2,:)'),squeeze(ASLR_Mann_q(1,:)'),squeeze(ASLR_Mann_q(3,:)'), ...
+    squeeze(Hist_Marcott_q(2,:)'),squeeze(Hist_Marcott_q(1,:)'),squeeze(Hist_Marcott_q(3,:)'), squeeze(CF_Marcott_q(2,:)'),squeeze(CF_Marcott_q(1,:)'),squeeze(CF_Marcott_q(3,:)'), squeeze(ASLR_Marcott_q(2,:)'),squeeze(ASLR_Marcott_q(1,:)'),squeeze(ASLR_Marcott_q(3,:)'), ...
+    'VariableNames',TS5_col);
+writetable(TS5,TS5_savename);
