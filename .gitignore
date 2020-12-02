@@ -286,3 +286,4 @@ data/source_data/
 *.zip
 data/INPUT
 data/OUTPUT
+data/observed
