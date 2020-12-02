@@ -62,7 +62,7 @@ This does not include data nor code to compute exposure of any variable, as thes
 
 ## License
 
-TBD
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 ## Acknowledgments
 
