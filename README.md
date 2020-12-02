@@ -9,11 +9,10 @@ If you have any questions, comments, or feedback on this code, please [contact D
 This study has been submitted to Nature Communications for consideration.
 If you use any or all of this code in your work, please include the citation:
 
-```
-B. H. Strauss, P. Orton, K. Bittermann, M. K. Buchanan, D. M. Gilford, R. E. Kopp, S. Kulp, C. Massey, H. de Moel, S. Vinogradov, 2020: 
-Economic Damages from Hurricane Sandy Attributable to Sea Level Rise Caused by Anthropogenic Climate Change. 
-Nature Communications. (under review, Dec. 2020)
-```
+
+> B. H. Strauss, P. Orton, K. Bittermann, M. K. Buchanan, D. M. Gilford, R. E. Kopp, S. Kulp, C. Massey, H. de Moel, S. Vinogradov, 2020: 
+> Economic Damages from Hurricane Sandy Attributable to Sea Level Rise Caused by Anthropogenic Climate Change. 
+> Nature Communications. (under review, Dec. 2020)
 
 ## Data
 
@@ -25,17 +24,21 @@ The code expects this data, which includes simulation water height fields, semi-
 
 ## Functionality
 
+This code was developed with MATLAB R2017b and R2018b.
+
 Importantly, this repository includes the code to load and correct the ADCIRC simulations. To do this correction, run the scripts in order:
 
+```
 WarpSandy()
-
 SandyCorrectionError()
+```
 
 This will load the table "sandyObservationData," and build the "sandyWarpedModelCompleteData" matrix variable, which contains latitude and longitude in the first two columns, and the corrected max water heights for simulations alt01-alt09 (alt06 being historical) in the remaining columns.
 
 Errors can be assessed using the script:
-
+```
 EvaluateSandyError( sandyObservationData, sandyWarpedModelCompleteData, 9 )
+```
 
 This does not include data nor code to compute exposure of any variable, as these are part of Climate Central's proprietary analysis systems, which due to licensing restrictions, cannot be shared.
 
