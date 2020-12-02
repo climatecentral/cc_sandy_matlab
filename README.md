@@ -1,6 +1,6 @@
 # cc_sandy_matlab
  
-This repository contains the code to compute much of the analysis presented in "Economic Damages from Hurricane Sandy Attributable to Sea Level Rise Caused by Anthropogenic Climate Change." It expects data from <link>, which includes simulation water height fields, in a subdirectory named "data."
+This repository contains the code to compute much of the analysis presented in "Economic Damages from Hurricane Sandy Attributable to Sea Level Rise Caused by Anthropogenic Climate Change." It expects data from (link), which includes simulation water height fields, in a subdirectory named "data."
 
 Importantly, this repository includes the code to load and correct the ADCIRC simulations. To do this correction, run the scripts in order:
 
