@@ -18,7 +18,7 @@ If you use any or all of this code in your work, please include the citation:
 
 The data supporting (and in some cases output by) these analyses is archived at Zenodo with the doi:
 
-<a href="https://doi.org/10.5281/zenodo.4302598"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.4302598.svg" alt="DOI"></a>
+<a href="https://doi.org/10.5281/zenodo.4302772"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.4302772.svg" alt="DOI"></a>
 
 The code expects this data, which includes simulation water height fields, semi-empirical model analyses, and observations. If you are running these analyses yourself, please download the data and update the appropriate filepaths in the codes you are running/referencing.
 
