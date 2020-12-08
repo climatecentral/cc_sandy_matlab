@@ -43,7 +43,7 @@ dat=table2array(T(:,1:7));
 
 % get the time grid
 nyear=dat(end,1)-dat(1,1)+1;
-yeargrid=(1:1:nyear)'+dat(1,1);
+yeargrid=(1:1:nyear)'+dat(1,1)-1;
 nmon=12;
 
 % convert the data from month-over-month to yr/mon format
