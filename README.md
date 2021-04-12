@@ -1,24 +1,23 @@
 # Code Supporting "Economic Damages from Hurricane Sandy Attributable to Sea Level Rise Caused by Anthropogenic Climate Change" by Strauss et al. (2020)
  
-This repository contains the code to compute much of the analysis presented in "Economic Damages from Hurricane Sandy Attributable to Sea Level Rise Caused by Anthropogenic Climate Change", which is currently under consideration for publication at *Nature Communications* (updated Dec. 2020).
+This repository contains the code to compute much of the analysis presented in "Economic Damages from Hurricane Sandy Attributable to Sea Level Rise Caused by Anthropogenic Climate Change", which will soon be published at *Nature Communications* (April 2021).
 
 If you have any questions, comments, or feedback on this code, please [contact Daniel Gilford (Climate Central)](mailto:dgilford@climatecentral.org) or open an [Issue](https://github.com/climatecentral/cc_sandy_matlab/issues) in the repository.
 
 ## Citation
 
-This study has been submitted to Nature Communications for consideration.
 If you use any or all of this code in your work, please include the citation:
 
 
-> B. H. Strauss, P. Orton, K. Bittermann, M. K. Buchanan, D. M. Gilford, R. E. Kopp, S. Kulp, C. Massey, H. de Moel, S. Vinogradov, 2020: 
+> B. H. Strauss, P. Orton, K. Bittermann, M. K. Buchanan, D. M. Gilford, R. E. Kopp, S. Kulp, C. Massey, H. de Moel, S. Vinogradov, 2021: 
 > Economic Damages from Hurricane Sandy Attributable to Sea Level Rise Caused by Anthropogenic Climate Change. 
-> Nature Communications. (under review, Dec. 2020)
+> Nature Communications (in press, Apr. 2021).
 
 ## Data
 
 The data supporting (and in some cases output by) these analyses is archived at Zenodo with the doi:
 
-<a href="https://doi.org/10.5281/zenodo.4302772"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.4302772.svg" alt="DOI"></a>
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4543662.svg)](https://doi.org/10.5281/zenodo.4543662)
 
 The code expects this data, which includes simulation water height fields, semi-empirical model analyses, and observations. If you are running these analyses yourself, please download the data and update the appropriate filepaths in the codes you are running/referencing.
 
